@@ -1,0 +1,14 @@
+<!--TODO: Add switching class-->
+<div class="products__item product">
+  <button class="product__wishlist-btn btn-reset"></button>
+  <button class="product__buy-btn btn-reset"></button>
+  <div class="product__label label">SALE</div>
+  <a class="product__item" routerLink="/shop/{{product.id}}">
+    <img class="product__image" src="{{product.pictureUrl}}" alt="{{product.name}}">
+    <h2 class="product__title">{{product.name}}</h2>
+    <p class="product__price">{{product.price | currency}}</p>
+    <p class="product__hover-text">Посмотреть товар</p>
+    <p class="product--not-available__text">нет в наличии</p>
+    <a class="product--not-available__link" href="#">Сообщить о поступлении</a>
+  </a>
+</div>

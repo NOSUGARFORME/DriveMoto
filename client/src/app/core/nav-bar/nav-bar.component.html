@@ -1,0 +1,51 @@
+<div class="header__top bg-white border-bottom shadow-sm fixed-top">
+  <div class="container">
+    <div class="header__top-inner">
+
+      <nav class="header__menu menu">
+
+        <ul class="menu__list">
+          <li class="menu__item">
+            <a class="menu__link" routerLink="/shop" routerLinkActive="active">Магазин</a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link" href="#">Акции</a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link" href="#">Доставка и оплата</a>
+          </li>
+        </ul>
+
+      </nav>
+
+      <a class="header__logo logo" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <img class="header__logo--desktop" src="assets/images/logo.svg" alt="Logo">
+      </a>
+
+      <div class="header__box box">
+        <div class="box__address">Москва, ул. Науки 25</div>
+        <ul class="box__panel panel">
+          <li class="panel__item">
+            <a class="panel__link" href="#">
+              <img src="assets/images/fav-icon.svg" alt="Favourites">
+            </a>
+          </li>
+          <li class="panel__item">
+            <a class="panel__link" href="#">
+              <img src="assets/images/user-icon.svg" alt="User">
+            </a>
+          </li>
+          <li class="panel__item">
+            <a class="panel__link cart" href="#">
+              <img src="assets/images/cart-icon.svg" alt="Cart">
+              <p class="cart__text">1</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <!-- /.header__top-inner -->
+  </div>
+  <!-- /.container -->
+</div>
