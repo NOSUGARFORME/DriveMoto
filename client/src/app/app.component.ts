@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BreadcrumbDefinition, BreadcrumbService} from "xng-breadcrumb";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'SkiNet';
+  breadcrumb$: Observable<BreadcrumbDefinition[]>;
 
-  constructor() { }
+  constructor(private bcService: BreadcrumbService) { }
 
   ngOnInit(): void {
+    this.breadcrumb$ = this.bcService.breadcrumbs$
   }
 }

@@ -7,7 +7,8 @@ using Core.Interfaces;
 using Core.Models;
 using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
-
+using API.Errors;
+using Microsoft.AspNetCore.Http;
 namespace API.Controllers
 {
     public class ProductsController : BaseApiController
@@ -46,11 +47,15 @@ namespace API.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductToReturnDto>>GetProduct(int id)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
             
             var product = await _productsRepo.GetEntityWithSpec(spec);
+
+             if (product == null) return NotFound(new ApiResponse(404));
 
             return _mapper.Map<Product, ProductToReturnDto>(product);
         }

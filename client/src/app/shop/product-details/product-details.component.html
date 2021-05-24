@@ -1,1 +1,89 @@
-<p>product-details works!</p>
+<div class="product-info mt-5" *ngIf="product">
+  <div class="container">
+    <div class="product-info__inner">
+      <div class="product-info__box">
+        <span class="product-info__label label">SALE</span>
+        <img
+          class="product-info__image"
+          src="{{ product.pictureUrl }}"
+          alt=""
+        />
+        <h3 class="product-info__price--old">1 200 475 ₽</h3>
+        <h2 class="product-info__price">{{ product.price | currency}}</h2>
+      </div>
+      <!-- /.product-info__box -->
+
+      <div class="product-info__content product-content">
+        <h1 class="product-content__title">
+          {{ product.name }}
+        </h1>
+        <p class="product-content__subtitle">Код товара: {{product.id}}</p>
+
+        <div class="product-content__buttons">
+          <a class="product-content__fav" href="#">
+            <img src="assets/images/fav-icon.svg" alt="" />
+          </a>
+          <a class="product-content__compare" href="#">
+            <img src="assets/images/compare.svg" alt="" />
+          </a>
+          <a class="product-content__rate" href="#">
+            <div class="rate-yo" data-rateyo-rating="4"></div>
+          </a>
+        </div>
+        <!-- /.product-content__buttons -->
+
+        <div class="product-info__tabs tabs">
+          <a
+            class="product-info__tabs-item tabs__item tabs__item--active"
+            href="#tab-1"
+            >Характеристики</a
+          >
+          <a class="product-info__tabs-item tabs__item" href="#tab-2"
+            >Наличие в магазине</a
+          >
+        </div>
+        <!-- /.product-info__tabs -->
+
+        <div class="product-info-content tabs-content">
+          <div class="tabs-content__item tabs-content__item--active" id="tab-1">
+            <ul class="product-info__list">
+              <li class="product-info__item">
+                <span class="product-info__item--left">Страна</span>
+                <span class="product-info__item--right">Канада</span>
+              </li>
+              <li class="product-info__item">
+                <span class="product-info__item--left"
+                  >Количество мест, шт:
+                </span>
+                <span class="product-info__item--right">3</span>
+              </li>
+              <li class="product-info__item">
+                <span class="product-info__item--left">Мощность, л.с.</span>
+                <span class="product-info__item--right">155</span>
+              </li>
+              <li class="product-info__item">
+                <span class="product-info__item--left">Тип двигателя</span>
+                <span class="product-info__item--right">Бензиновый</span>
+              </li>
+              <li class="product-info__item">
+                <span class="product-info__item--left">Год выпуска</span>
+                <span class="product-info__item--right">2018</span>
+              </li>
+            </ul>
+<!--            TODO: Do this-->
+            <a class="product-info__more-btn" href="#">Показать еще</a>
+            <button class="product-info__buy-btn btn-reset">Купить</button>
+          </div>
+          <!-- /.tabs-content__item -->
+
+          <div class="tabs-content__item" id="tab-2">Content 2</div>
+          <!-- /.tabs-content__item -->
+        </div>
+        <!-- /.product-info-content -->
+      </div>
+      <!-- /.product-info__content -->
+    </div>
+    <!-- /.product-info__inner -->
+  </div>
+  <!-- /.container -->
+</div>
