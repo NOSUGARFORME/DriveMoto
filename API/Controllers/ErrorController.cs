@@ -1,9 +1,9 @@
-﻿using API.Errors;
+using API.Errors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("errors/{code:int}")]
+    [Route("errors/{code}")]
     [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorController : BaseApiController
     {

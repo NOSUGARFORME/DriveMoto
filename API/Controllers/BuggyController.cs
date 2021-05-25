@@ -1,4 +1,4 @@
-﻿using API.Errors;
+using API.Errors;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,8 +6,8 @@ namespace API.Controllers
 {
     public class BuggyController : BaseApiController
     {
-        private readonly AppContext _context;
-        public BuggyController(AppContext context)
+        private readonly StoreContext _context;
+        public BuggyController(StoreContext context)
         {
             _context = context;
         }
@@ -17,10 +17,7 @@ namespace API.Controllers
         {
             var thing = _context.Products.Find(42);
 
-            if (thing == null) 
-            {
-                return NotFound(new ApiResponse(404));
-            }
+            if (thing == null) return NotFound(new ApiResponse(404));
 
             return Ok();
         }
@@ -41,7 +38,7 @@ namespace API.Controllers
             return BadRequest(new ApiResponse(400));
         }
 
-        [HttpGet("badrequest/{id:int}")]
+        [HttpGet("badrequest/{id}")]
         public ActionResult GetNotFoundRequest(int id)
         {
             return Ok();

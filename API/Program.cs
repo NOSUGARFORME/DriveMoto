@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using AppContext = Infrastructure.Data.AppContext;
+using AppContext = Infrastructure.Data.StoreContext;
 
 namespace API
 {
@@ -22,7 +22,7 @@ namespace API
             {
                 var context = services.GetRequiredService<AppContext>();
                 await context.Database.MigrateAsync();
-                await AppContextSeed.SeedAsync(context, loggerFactory);
+                await StoreContextSeed.SeedAsync(context, loggerFactory);
             }
             catch (Exception ex)
             {
