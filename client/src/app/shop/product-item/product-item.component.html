@@ -1,7 +1,7 @@
 <!--TODO: Add switching class-->
 <div class="products__item product">
   <button class="product__wishlist-btn btn-reset"></button>
-  <button class="product__buy-btn btn-reset"></button>
+  <button class="product__buy-btn btn-reset" (click)="addItemToBasket()"></button>
   <div class="product__label label">SALE</div>
   <a class="product__item" routerLink="/shop/{{product.id}}">
     <img class="product__image" src="{{product.pictureUrl}}" alt="{{product.name}}">

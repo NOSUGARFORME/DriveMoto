@@ -36,9 +36,9 @@
             </a>
           </li>
           <li class="panel__item">
-            <a class="panel__link cart" href="#">
+            <a class="panel__link cart" routerLink="/basket">
               <img src="assets/images/cart-icon.svg" alt="Cart">
-              <p class="cart__text">1</p>
+              <p *ngIf="(basket$ | async) as basket" class="cart__text">{{basket.items.length}}</p>
             </a>
           </li>
         </ul>
