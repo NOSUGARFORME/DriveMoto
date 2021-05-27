@@ -1,12 +1,14 @@
 using System;
 using System.Threading.Tasks;
+using Core.Entities.Identity;
 using Infrastructure.Data;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using AppContext = Infrastructure.Data.StoreContext;
 
 namespace API
 {
@@ -18,19 +20,24 @@ namespace API
             using var scope = host.Services.CreateScope();
             var services = scope.ServiceProvider;
             var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-            try
+            try 
             {
-                var context = services.GetRequiredService<AppContext>();
+                var context = services.GetRequiredService<StoreContext>();
                 await context.Database.MigrateAsync();
                 await StoreContextSeed.SeedAsync(context, loggerFactory);
+                
+                var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                await identityContext.Database.MigrateAsync();
+                await AppIdentityDbContextSeed.SeedUserAsync(userManager);
             }
             catch (Exception ex)
             {
                 var logger = loggerFactory.CreateLogger<Program>();
-                logger.LogError(ex, "An error occured during migration");
+                logger.LogError(ex, "An error occurred during migration");
             }
-            
-            await host.RunAsync();
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
