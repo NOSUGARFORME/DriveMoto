@@ -71,6 +71,20 @@
   &__item {
     padding-right: 10px;
   }
+
+  // .panel__link
+
+  &__link {
+    cursor: pointer;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .dropdown-menu {
+    cursor: pointer;
+  }
 }
 
 .cart {

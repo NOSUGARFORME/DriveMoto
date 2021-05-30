@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BreadcrumbDefinition, BreadcrumbService} from "xng-breadcrumb";
 import {Observable} from "rxjs";
 import {BasketService} from "./basket/basket.service";
+import {AccountService} from "./account/account.service";
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,23 @@ export class AppComponent implements OnInit {
   title = 'DriveMoto';
   breadcrumb$: Observable<BreadcrumbDefinition[]>;
 
-  constructor(private bcService: BreadcrumbService, private basketService: BasketService) { }
+  constructor(private bcService: BreadcrumbService, private basketService: BasketService, private accountService: AccountService) { }
 
   ngOnInit(): void {
+    this.loadBasket();
+    this.loadCurrentUser();
+  }
+
+  loadCurrentUser(){
+    const token = localStorage.getItem ('token');
+    this.accountService.loadCurrentUser(token).subscribe (() => {
+      console.log ('loaded user');
+    }, error => {
+      console.log (error);
+    });
+  }
+
+  loadBasket(){
     this.breadcrumb$ = this.bcService.breadcrumbs$;
     const basketId = localStorage.getItem('basket_id');
     if(basketId){
@@ -22,7 +37,7 @@ export class AppComponent implements OnInit {
         console.log('initialised basket');
       }, error => {
         console.log(error);
-      })
+      });
     }
   }
 }
