@@ -23,7 +23,10 @@ import {SharedModule} from "../shared/shared.module";
     RouterModule,
     BreadcrumbModule,
     SharedModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass: 'toastr-bottom-right',
+      preventDuplicates: true
+    })
   ],
   exports: [NavBarComponent, FooterComponent],
 })
