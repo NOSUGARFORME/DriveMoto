@@ -3,6 +3,9 @@ import {BreadcrumbDefinition, BreadcrumbService} from "xng-breadcrumb";
 import {Observable} from "rxjs";
 import {BasketService} from "./basket/basket.service";
 import {AccountService} from "./account/account.service";
+import {ShopService} from "./shop/shop.service";
+import {environment} from "../environments/environment";
+
 
 @Component({
   selector: 'app-root',
@@ -11,9 +14,11 @@ import {AccountService} from "./account/account.service";
 })
 export class AppComponent implements OnInit {
   title = 'DriveMoto';
+
+  baseUrl = environment.apiUrl;
   breadcrumb$: Observable<BreadcrumbDefinition[]>;
 
-  constructor(private bcService: BreadcrumbService, private basketService: BasketService, private accountService: AccountService) { }
+  constructor(private bcService: BreadcrumbService, private basketService: BasketService, private accountService: AccountService, private shopService: ShopService) { }
 
   ngOnInit(): void {
     this.loadBasket();

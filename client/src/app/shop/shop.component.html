@@ -2,17 +2,19 @@
   <div class="row">
     <section class="col-3">
       <ng-container *ngIf="types && brands">
-      <h5 class="text-warning ml-3">Sort</h5>
+      <h5 class="text-filter ml-3">Sort</h5>
       <select
         class="custom-select my-3"
         (change)="onSortSelected($event.target.value)"
       >
-        <option *ngFor="let sort of sortOptions" [value]="sort.value">
+        <option *ngFor="let sort of sortOptions"
+                [selected]="shopParams.sort === sort.value"
+                [value]="sort.value">
           {{ sort.name }}
         </option>
       </select>
 
-      <h5 class="text-warning ml-3">Brands</h5>
+      <h5 class="text-filter ml-3">Brands</h5>
       <ul class="list-group mb-3">
         <li
           class="list-group-item"
@@ -24,7 +26,7 @@
           {{ brand.name }}
         </li>
       </ul>
-      <h5 class="text-warning ml-3">Types</h5>
+      <h5 class="text-filter ml-3">Types</h5>
       <ul class="list-group my-3">
         <li
           class="list-group-item"
@@ -72,6 +74,7 @@
         <app-pager
           [pageSize]="shopParams.pageSize"
           [totalCount]="totalCount"
+          [pageNumber]="shopParams.pageNumber"
           (pageChanged)="onPageChanged($event)"
         ></app-pager>
       </div>

@@ -9,6 +9,7 @@
   --alto-color: #e0e0e0;
   --silver-color: #cdcdcd;
   --abbey-color: #48494d;
+  --purple-color: #9400D3;
 }
 
 // for naming colors use: https://chir.ag/projects/name-that-color
@@ -77,18 +78,29 @@ a {
 button{
   border: none;
 
+  &.btn-outline-success{
+    color: var(--purple-color) !important;
+    border-color: var(--purple-color);
+
+    &:hover{
+      background-color: var(--purple-color);
+      border-color: var(--purple-color);
+      color: var(--white-color) !important;
+    }
+  }
+
   &.btn-primary{
     background-color: var(--accent-color);
     border-color: var(--accent-color);
   }
 
   &.btn-outline-primary{
-    color: var(--accent-color);
     border-color: var(--accent-color);
 
     &:hover{
       background-color: var(--accent-color);
       border-color: var(--accent-color);
+      color: var(--white-color);
     }
   }
 }
@@ -100,6 +112,10 @@ button{
 
   .xng-breadcrumb-link{
     color: #c4c4c4;
+
+    &:hover{
+      color: var(--accent-color);
+    }
   }
 }
 

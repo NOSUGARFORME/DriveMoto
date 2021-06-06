@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {BasketService} from "../../basket/basket.service";
-import {CheckoutService} from "../checkout.service";
-import {ToastrService} from "ngx-toastr";
-import {NavigationExtras, Router} from "@angular/router";
-import {IOrder} from "../../shared/models/order";
-import {IBasket} from "../../shared/models/basket";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { NavigationExtras, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { BasketService } from 'src/app/basket/basket.service';
+import { IBasket } from 'src/app/shared/models/basket';
+import { IOrder } from 'src/app/shared/models/order';
+import { CheckoutService } from '../checkout.service';
 
 @Component({
   selector: 'app-checkout-payment',
@@ -15,8 +15,8 @@ import {IBasket} from "../../shared/models/basket";
 export class CheckoutPaymentComponent implements OnInit {
   @Input() checkoutForm: FormGroup;
 
-  constructor(private basketService: BasketService, private checkoutService: CheckoutService,
-              private toastr: ToastrService, private router: Router) { }
+  constructor(private basketService: BasketService, private checkoutService: CheckoutService, 
+      private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
   }
