@@ -19,6 +19,21 @@ namespace Infrastructure.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Core.Entities.EngineType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EngineTypes");
+                });
+
             modelBuilder.Entity("Core.Entities.OrderAggregate.DeliveryMethod", b =>
                 {
                     b.Property<int>("Id")
@@ -110,6 +125,14 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EngineTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ManufacturedCountry")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -118,6 +141,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("PictureUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -128,7 +154,15 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ReleaseYear")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SeatsNumber")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("EngineTypeId");
 
                     b.HasIndex("ProductBrandId");
 
@@ -247,6 +281,12 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Product", b =>
                 {
+                    b.HasOne("Core.Entities.EngineType", "EngineType")
+                        .WithMany()
+                        .HasForeignKey("EngineTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Core.Entities.ProductBrand", "ProductBrand")
                         .WithMany()
                         .HasForeignKey("ProductBrandId")
@@ -258,6 +298,8 @@ namespace Infrastructure.Data.Migrations
                         .HasForeignKey("ProductTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("EngineType");
 
                     b.Navigation("ProductBrand");
 

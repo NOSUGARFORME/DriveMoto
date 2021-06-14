@@ -1,19 +1,19 @@
 <div class="bg-light px-2 text-uppercase font-weight-bold" style="padding: 1.20em;">
-    Order Summary
+    Итог Заказа
 </div>
-<div class="p-4">
-    <p class="font-italic mb-4">Shipping costs will be added depending on choices made during checkout</p>
+<div>
+    <p class="font-italic mb-4">Стоимость доставки бужет добавлена после выбора в оформлении заказа</p>
     <ul class="list-unstyled mb-4">
         <li class="d-flex justify-content-between py-3 border-bottom">
-            <strong class="text-muted">Order subtotal</strong>
+            <strong class="text-muted">Сумма</strong>
             <strong>{{subtotal | currency}}</strong>
         </li>
         <li class="d-flex justify-content-between py-3 border-bottom">
-            <strong class="text-muted">Shipping and handling</strong>
+            <strong class="text-muted">Доставка</strong>
             <strong>{{shippingPrice | currency}}</strong>
         </li>
         <li class="d-flex justify-content-between py-3 border-bottom">
-            <strong class="text-muted">Total</strong>
+            <strong class="text-muted">Итого</strong>
             <strong>{{total | currency}}</strong>
         </li>
     </ul>

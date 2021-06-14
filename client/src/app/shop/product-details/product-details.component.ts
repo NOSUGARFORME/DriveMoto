@@ -33,7 +33,7 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe(
         (product) => {
           this.product = product;
-          this.bcService.set('@productDetails', product.name)
+          this.bcService.set('@productDetails', product.name);
         },
         (error) => {
           console.log(error);

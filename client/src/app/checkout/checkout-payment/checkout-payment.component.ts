@@ -15,7 +15,7 @@ import { CheckoutService } from '../checkout.service';
 export class CheckoutPaymentComponent implements OnInit {
   @Input() checkoutForm: FormGroup;
 
-  constructor(private basketService: BasketService, private checkoutService: CheckoutService, 
+  constructor(private basketService: BasketService, private checkoutService: CheckoutService,
       private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class CheckoutPaymentComponent implements OnInit {
     const basket = this.basketService.getCurrentBasketValue();
     const orderToCreate = this.getOrderToCreate(basket);
     this.checkoutService.createOrder(orderToCreate).subscribe((order: IOrder) => {
-      this.toastr.success('Order created successfully');
+      this.toastr.success('Заказ успешно создан');
       this.basketService.deleteLocalBasket(basket.id);
       const navigationExtras: NavigationExtras = {state: order};
       this.router.navigate(['checkout/success'], navigationExtras);

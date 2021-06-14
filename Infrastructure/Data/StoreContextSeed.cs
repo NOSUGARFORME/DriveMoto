@@ -41,6 +41,19 @@ namespace Infrastructure.Data
 
                     await context.SaveChangesAsync();
                 }
+                
+                if (!context.EngineTypes.Any())
+                {
+                    var typesData = File.ReadAllText("../Infrastructure/Data/SeedData/engineTypes.json");
+                    var types = JsonSerializer.Deserialize<List<EngineType>>(typesData);
+
+                    foreach (var item in types)
+                    {
+                        context.EngineTypes.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
 
                 if (!context.Products.Any())
                 {

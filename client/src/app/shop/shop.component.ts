@@ -15,15 +15,17 @@ export class ShopComponent implements OnInit {
   products: IProduct[];
   brands: IBrand[];
   types: IType[];
-  shopParams = new ShopParams();
+  shopParams: ShopParams;
   totalCount: number;
   sortOptions = [
-    {name: 'Alphabetical', value: 'name'},
-    {name: 'Price: Low to high', value: 'priceAsc'},
-    {name: 'Price: High to low', value: 'priceDesc'},
+    {name: 'По алфавиту', value: 'name'},
+    {name: 'По возрастанию цены', value: 'priceAsc'},
+    {name: 'По убыванию цены', value: 'priceDesc'},
   ]
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService) {
+    this.shopParams = this.shopService.getShopParams();
+  }
 
   ngOnInit(): void {
     this.getProducts(true);
@@ -37,12 +39,12 @@ export class ShopComponent implements OnInit {
       this.totalCount = response.count;
     }, error => {
       console.log(error);
-    });
+    })
   }
 
   getBrands() {
     this.shopService.getBrands().subscribe(response => {
-      this.brands = [{id: 0, name: 'All'}, ...response];
+      this.brands = [{id: 0, name: 'Все'}, ...response];
     }, error => {
       console.log(error);
     })
@@ -50,7 +52,7 @@ export class ShopComponent implements OnInit {
 
   getTypes() {
     this.shopService.getTypes().subscribe(response => {
-      this.types = [{id: 0, name: 'All'}, ...response];
+      this.types = [{id: 0, name: 'Все'}, ...response];
     }, error => {
       console.log(error);
     })

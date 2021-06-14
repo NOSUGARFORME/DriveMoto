@@ -2,13 +2,13 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form login-form">
 
     <div class="text-center mb-4">
-      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Вход</h1>
     </div>
 
-    <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
-    <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
+    <app-text-input formControlName="email" [label]="'Элетронная почта'"></app-text-input>
+    <app-text-input formControlName="password" [label]="'Пароль'" [type]="'password'"></app-text-input>
 
-    <button [disabled]="loginForm.invalid" class="btn">login</button>
-    <p class="message text-center">Not registered? <a routerLink="/account/register">Create an account</a></p>
+    <button [disabled]="loginForm.invalid" class="btn">Войти</button>
+    <p class="message text-center">Не зарегестированы? <a routerLink="/account/register">Создать аккаунт</a></p>
   </form>
 </div>

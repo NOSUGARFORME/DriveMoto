@@ -10,9 +10,15 @@ namespace Infrastructure.Data.Config
         {
             builder.Property(p => p.Id).IsRequired();
             builder.Property(p => p.Name).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.ManufacturedCountry).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.SeatsNumber).IsRequired();
+            builder.Property(p => p.Power).IsRequired();
+            builder.Property(p => p.ReleaseYear).IsRequired();
             builder.Property(p => p.Description).IsRequired();
             builder.Property(p => p.Price).HasColumnType("decimal(18,2)");
             builder.Property(p => p.PictureUrl).IsRequired();
+            builder.HasOne(p => p.EngineType).WithMany()
+                .HasForeignKey(p => p.EngineTypeId);
             builder.HasOne(p => p.ProductBrand).WithMany()
                 .HasForeignKey(p => p.ProductBrandId);
             builder.HasOne(p => p.ProductType).WithMany()

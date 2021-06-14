@@ -9,6 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import {ToastrModule} from "ngx-toastr";
 import {SharedModule} from "../shared/shared.module";
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {SharedModule} from "../shared/shared.module";
     FooterComponent,
     TestErrorComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    ComingSoonComponent
   ],
   imports: [
     CommonModule,

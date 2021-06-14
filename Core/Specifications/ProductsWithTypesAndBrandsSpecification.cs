@@ -1,10 +1,8 @@
-using System;
-using System.Linq.Expressions;
 using Core.Entities;
 
 namespace Core.Specifications
 {
-    public class ProductsWithTypesAndBrandsSpecification : BaseSpecifcation<Product>
+    public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {
         public ProductsWithTypesAndBrandsSpecification(ProductSpecParams productParams) : base(x => 
             (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains(productParams.Search)) &&
@@ -14,23 +12,22 @@ namespace Core.Specifications
         {
             AddInclude(x => x.ProductType);
             AddInclude(x => x.ProductBrand);
+            AddInclude(x => x.EngineType);
             AddOrderBy(x => x.Name);
             ApplyPaging(productParams.PageSize * (productParams.PageIndex - 1), productParams.PageSize);
 
-            if (!string.IsNullOrEmpty(productParams.Sort))
+            if (string.IsNullOrEmpty(productParams.Sort)) return;
+            switch (productParams.Sort)
             {
-                switch (productParams.Sort)
-                {
-                    case "priceAsc":
-                        AddOrderBy(p => p.Price);
-                        break;
-                    case "priceDesc":
-                        AddOrderByDescending(p => p.Price);
-                        break;
-                    default:
-                        AddOrderBy(n => n.Name);
-                        break;
-                }
+                case "priceAsc":
+                    AddOrderBy(p => p.Price);
+                    break;
+                case "priceDesc":
+                    AddOrderByDescending(p => p.Price);
+                    break;
+                default:
+                    AddOrderBy(n => n.Name);
+                    break;
             }
         }
 
@@ -38,6 +35,7 @@ namespace Core.Specifications
         {
             AddInclude(x => x.ProductType);
             AddInclude(x => x.ProductBrand);
+            AddInclude(x => x.EngineType);
         }
     }
 }

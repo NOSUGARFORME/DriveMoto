@@ -42,7 +42,7 @@
     background-image: url('../../../assets/images/fav-icon.svg');
 
     &.wishlist-btn--active {
-      background-image: url('../../../assets/images/fav-icon--active.svg');
+      background-image: url('../../../assets/images/fav-icon--active.svg') !important;
     }
   }
 

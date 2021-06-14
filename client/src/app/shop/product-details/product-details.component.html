@@ -8,7 +8,6 @@
           src="{{ product.pictureUrl }}"
           alt="{{ product.name}}"
         />
-        <h3 class="product-info__price--old">{{ product.price * 0.1 + product.price | currency}}</h3>
         <h2 class="product-info__price">{{ product.price | currency}}</h2>
       </div>
       <!-- /.product-info__box -->
@@ -20,13 +19,13 @@
         <p class="product-content__subtitle">Код товара: {{product.id}}</p>
 
         <div class="product-content__buttons">
-          <a class="product-content__fav" href="#">
+          <a class="product-content__fav" routerLink="/coming-soon">
             <img src="assets/images/fav-icon.svg" alt="" />
           </a>
-          <a class="product-content__compare" href="#">
+          <a class="product-content__compare" routerLink="/coming-soon">
             <img src="assets/images/compare.svg" alt="" />
           </a>
-          <a class="product-content__rate" href="#">
+          <a class="product-content__rate" routerLink="/coming-soon">
             <div class="rate-yo" data-rateyo-rating="4"></div>
           </a>
         </div>
@@ -38,7 +37,7 @@
             href="#tab-1"
             >Характеристики</a
           >
-          <a class="product-info__tabs-item tabs__item" href="#tab-2"
+          <a class="product-info__tabs-item tabs__item" routerLink="/coming-soon"
             >Наличие в магазине</a
           >
         </div>
@@ -49,29 +48,27 @@
             <ul class="product-info__list">
               <li class="product-info__item">
                 <span class="product-info__item--left">Страна</span>
-                <span class="product-info__item--right">Канада</span>
+                <span class="product-info__item--right">{{product.manufacturedCountry}}</span>
               </li>
               <li class="product-info__item">
                 <span class="product-info__item--left"
                   >Количество мест, шт:
                 </span>
-                <span class="product-info__item--right">3</span>
+                <span class="product-info__item--right">{{product.seatsNumber}}</span>
               </li>
               <li class="product-info__item">
                 <span class="product-info__item--left">Мощность, л.с.</span>
-                <span class="product-info__item--right">155</span>
+                <span class="product-info__item--right">{{product.power}}</span>
               </li>
               <li class="product-info__item">
                 <span class="product-info__item--left">Тип двигателя</span>
-                <span class="product-info__item--right">Бензиновый</span>
+                <span class="product-info__item--right">{{product.engineType}}</span>
               </li>
               <li class="product-info__item">
                 <span class="product-info__item--left">Год выпуска</span>
-                <span class="product-info__item--right">2018</span>
+                <span class="product-info__item--right">{{product.releaseYear}}</span>
               </li>
             </ul>
-<!--            TODO: Do this-->
-            <a class="product-info__more-btn" href="#">Показать еще</a>
             <div class="row align-items-center">
               <div class="ml-5">
                 <i (click)="decrementQuantity()" class="fa fa-minus-circle mx-2" style="color: #1c62cd; cursor: pointer; font-size: 1.5em;"></i>
@@ -82,13 +79,13 @@
             </div>
           </div>
           <!-- /.tabs-content__item -->
-
-          <div class="tabs-content__item" id="tab-2">Content 2</div>
-          <!-- /.tabs-content__item -->
         </div>
         <!-- /.product-info-content -->
       </div>
       <!-- /.product-info__content -->
+    </div>
+    <div class="mt-5">
+      {{product.description}}
     </div>
     <!-- /.product-info__inner -->
   </div>

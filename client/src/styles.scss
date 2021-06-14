@@ -82,10 +82,14 @@ button{
     color: var(--purple-color) !important;
     border-color: var(--purple-color);
 
-    &:hover{
-      background-color: var(--purple-color);
-      border-color: var(--purple-color);
+    &:hover, &:active{
+      background-color: var(--purple-color) !important;
+      border-color: var(--purple-color) !important;
       color: var(--white-color) !important;
+    }
+
+    &:focus{
+      box-shadow: 0 0 0 0.2rem var(--purple-color);
     }
   }
 
@@ -103,6 +107,10 @@ button{
       color: var(--white-color);
     }
   }
+}
+
+.toast-success{
+  background-color: var(--purple-color);
 }
 
 .xng-breadcrumb-root{

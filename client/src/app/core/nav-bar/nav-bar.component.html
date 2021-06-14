@@ -9,10 +9,10 @@
             <a class="menu__link" routerLink="/shop" routerLinkActive="active">Магазин</a>
           </li>
           <li class="menu__item">
-            <a class="menu__link" routerLink="/test-errors" routerLinkActive="active">Errors</a>
+            <a class="menu__link" routerLink="/test-errors" routerLinkActive="active">Ошибки</a>
           </li>
           <li class="menu__item">
-            <a class="menu__link" href="#">Доставка и оплата</a>
+            <a class="menu__link" routerLink="/coming-soon">Доставка и оплата</a>
           </li>
         </ul>
 
@@ -24,10 +24,10 @@
       </a>
 
       <div class="header__box box">
-        <div class="box__address">Москва, ул. Науки 25</div>
+        <div class="box__address" routerLink="/coming-soon" style="cursor: pointer">Какая-то улица</div>
         <ul class="box__panel panel">
           <li class="panel__item">
-            <a class="panel__link" href="#">
+            <a class="panel__link" routerLink="/coming-soon">
               <img src="assets/images/fav-icon.svg" alt="Favourites">
             </a>
           </li>
@@ -44,14 +44,14 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
                   <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2">
-                    <i class="fa fa-shopping-cart mr-3"></i> View Basket
+                    <i class="fa fa-shopping-cart mr-3"></i> Посмотреть корзину
                   </a>
                   <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2">
-                    <i class="fa fa-history mr-3"></i> View Orders
+                    <i class="fa fa-history mr-3"></i> Посмотреть заказы
                   </a>
                   <div class="dropdown-divider"></div>
                   <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
-                    <i class="fa fa-sign-out mr-3"></i> Logout
+                    <i class="fa fa-sign-out mr-3"></i> Выйти
                   </a>
                 </div>
               </div>

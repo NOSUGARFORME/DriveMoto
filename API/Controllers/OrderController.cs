@@ -1,12 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Errors;
 using API.Extensions;
 using AutoMapper;
-using Core.Entities;
 using Core.Entities.OrderAggregate;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
